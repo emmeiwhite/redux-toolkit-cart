@@ -38,6 +38,6 @@ const cartSlice = createSlice({
 })
 
 console.log(cartSlice) // This cartSlice object contains bunch of properties and one property is reducer which we will export
-export const { clearCart, removeItem, increase } = cartSlice.actions
+export const { clearCart, removeItem, increase, decrease } = cartSlice.actions
 
 export default cartSlice.reducer
