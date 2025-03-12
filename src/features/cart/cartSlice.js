@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import cartItems from '../../cartItems'
 const initialState = {
   cartItems: cartItems,
-  totalItems: 4,
+  totalItems: 0,
   totalAmount: 0,
   isLoading: false
 }
@@ -33,6 +33,17 @@ const cartSlice = createSlice({
       const cartItem = state.cartItems.find(item => item.id === payload.id)
       cartItem.amount = cartItem.amount - 1
       state.totalItems = state.totalItems - 1
+    },
+    calculateTotals: state => {
+      let itemsCount = 0
+      let amountTotal = 0
+      state.cartItems.forEach(item => {
+        itemsCount += item.amount
+        amountTotal += (item.price * item.amount).toFixed(2)
+      })
+      // Immer in action
+      state.totalItems = itemsCount
+      state.totalAmount = amountTotal
     }
   }
 })
