@@ -39,16 +39,16 @@ const cartSlice = createSlice({
       let amountTotal = 0
       state.cartItems.forEach(item => {
         itemsCount += item.amount
-        amountTotal += (item.price * item.amount).toFixed(2)
+        amountTotal += item.price * item.amount
       })
       // Immer in action
       state.totalItems = itemsCount
-      state.totalAmount = amountTotal
+      state.totalAmount = amountTotal.toFixed(2)
     }
   }
 })
 
 console.log(cartSlice) // This cartSlice object contains bunch of properties and one property is reducer which we will export
-export const { clearCart, removeItem, increase, decrease } = cartSlice.actions
+export const { clearCart, removeItem, increase, decrease, calculateTotals } = cartSlice.actions
 
 export default cartSlice.reducer
