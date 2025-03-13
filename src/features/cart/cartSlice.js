@@ -18,6 +18,8 @@ const cartSlice = createSlice({
       //   console.log(payload)
       const itemId = action.payload
 
+      /** Before remove all the cart items, we must first open the modal, we must have a way out to use openModal action creator here in the cartSlice */
+
       state.cartItems = state.cartItems.filter(item => item.id !== itemId)
     },
     increase: (state, { payload }) => {
